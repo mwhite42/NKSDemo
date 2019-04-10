@@ -1,4 +1,5 @@
 from aiohttp import web
+import math
 
 
 async def add(request):
@@ -21,10 +22,15 @@ async def divide(request):
     return web.json_response({"answer": answer})
 
 
+async def pi(request):
+    return web.json_response({"answer": math.pi})
+
+
 app = web.Application()
 app.router.add_get('/add', add)
 app.router.add_get('/subtract', subtract)
 app.router.add_get('/multiply', multiply)
 app.router.add_get('/divide', divide)
+app.router.add_get('/pi', pi)
 
 web.run_app(app)
