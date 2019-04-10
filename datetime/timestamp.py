@@ -4,7 +4,7 @@ import datetime
 
 async def handle(request):
     now = datetime.datetime.now()
-    return web.json_response({"timestamp": now.strftime("%Y%m%d%H%M%S")})
+    return web.json_response({"now timestamp": now.strftime("%Y%m%d%H%M%S")})
 
 
 app = web.Application()
