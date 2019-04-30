@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cookie-preparation
+spec:
+  selector:
+    matchLabels:
+      app: preparation
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: preparation
+    spec:
+      containers:
+      - name: preparation
+        image: mattwhitenetapp/preparation:latest
+        ports:
+        - containerPort: 80
+
