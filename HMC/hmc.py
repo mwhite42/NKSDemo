@@ -16,15 +16,9 @@ async def handle(request):
     return {"presenter": PRESENTER, "date": now.strftime("%Y%m%d%H%M%S"), "env": ENV}
 
 
-async def mp4(request):
-    return web.FileResponse('/static/hmc.mp4')
-
-
 app = web.Application()  # Initialize the base web application
 aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader(''))  # tell the template system where to look for templates
 
 app.router.add_get('/', handle)  # Configure a URL
-app.router.add_static("/css/", path="./css/")
-app.router.add_get("/hmc.mp4", mp4)
 
 web.run_app(app)  # Loop and listen for connections
