@@ -10,14 +10,14 @@ ENV = os.environ.get('ENVIRONMENT', "unknown")
 
 
 # Handle a request mapped from the URL below and process it through the template
-@aiohttp_jinja2.template('./index.jinja2')
+@aiohttp_jinja2.template('./templates/index.jinja2')
 async def handle(request):
     now = datetime.datetime.now()
-    return {"presenter": PRESENTER, "date": now.strftime("%Y%m%d%H%M%S"), "env": ENV }
+    return {"presenter": PRESENTER, "date": now.strftime("%Y%m%d%H%M%S"), "env": ENV}
 
 
 async def mp4(request):
-    return web.FileResponse('./hmc.mp4')
+    return web.FileResponse('/static/hmc.mp4')
 
 
 app = web.Application()  # Initialize the base web application
