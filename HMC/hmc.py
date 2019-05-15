@@ -19,6 +19,8 @@ async def handle(request):
 app = web.Application()  # Initialize the base web application
 aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader(''))  # tell the template system where to look for templates
 
+app.router.add_get('/index.html', handle)  # Configure a URL
 app.router.add_get('/', handle)  # Configure a URL
 
 web.run_app(app)  # Loop and listen for connections
+
